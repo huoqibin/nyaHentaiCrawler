@@ -13,31 +13,19 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class nyaPictureMain {
-
     //存放目录
-    private static String fileSource = "E://nyaManhua//new//";
+    private static String fileSource = "D://huoqi//Documents//nyaComics//";
 
     public static void main(String[] args) throws Exception {
-
-
         List<String> urlList = new ArrayList<String>();
 
-        //地址
+        //要下载的本子地址  注意：是预览页，而不是详情页 如：https://zh.nyahentai.fun/g/232003/
         urlList.add("");
-        urlList.add("");
-        urlList.add("");
-        urlList.add("");
-        urlList.add("");
-        urlList.add("");
-        urlList.add("");
-
-
 
         nyaPictureMain.crawlerNyaUrl(urlList);
         String exSite = "cmd /c start " + fileSource ;
@@ -45,9 +33,14 @@ public class nyaPictureMain {
 
     }
 
-
+    /**
+     * 解析地址，获取图片
+     * @param picSum
+     * @param fileUrl
+     * @param intputFile
+     * @param suffix
+     */
     public static void crawlerNyaPic(int picSum,String fileUrl,String intputFile,String suffix){
-
         try {
             for (int i = 1; i <= picSum; i++) {
 //                suffix = ".jpg"; //随时替换文件格式
@@ -74,9 +67,12 @@ public class nyaPictureMain {
         }
     }
 
-
+    /**
+     * 根据地址，获取本子信息，拼接URL用于爬取图片
+     * @param urlList
+     * @throws Exception
+     */
     public static void crawlerNyaUrl(List<String> urlList) throws Exception {
-
         Integer rateDow = 1;
         for(String url:urlList){
             String html = "";
@@ -109,7 +105,7 @@ public class nyaPictureMain {
             }
         }
 
-        System.out.println("喵变态图片缓存成功！！！！");
+        System.out.println("nyahentai图片缓存成功！！！！");
 
 
 
