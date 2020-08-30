@@ -16,21 +16,31 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class nyaPictureMain {
     //存放目录
-    private static String fileSource = "D://huoqi//Documents//nyaComics//";
+    private static String fileSource = "C://nyaComics//";
 
     public static void main(String[] args) throws Exception {
-        List<String> urlList = new ArrayList<String>();
+        while(true){
+            System.out.println("这里是喵绅士本子下载器！");
+            System.out.println("请输入目标本子的下载链接！（注意：是预览页，而不是详情页 如：https://zh.nyahentai.fun/g/232003/）");
+            System.out.println("可一次输入多个链接，连接之间以回车分隔。最后输入OK即可开始下载。下载目标地址：C://nyaComics/");
+            List<String> urlList = new ArrayList<String>();
 
-        //要下载的本子地址  注意：是预览页，而不是详情页 如：https://zh.nyahentai.fun/g/232003/
-        urlList.add("");
+            //要下载的本子地址  注意：是预览页，而不是详情页 如：https://zh.nyahentai.fun/g/232003/
+            Scanner in = new Scanner(System.in);
+            String urlStr = in.nextLine();
+            while(!urlStr.equals("OK")){
+                urlList.add(urlStr);
+                urlStr = in.nextLine();
+            }
 
-        nyaPictureMain.crawlerNyaUrl(urlList);
-        String exSite = "cmd /c start " + fileSource ;
-        Runtime.getRuntime().exec(exSite);
-
+            nyaPictureMain.crawlerNyaUrl(urlList);
+            String exSite = "cmd /c start " + fileSource ;
+            Runtime.getRuntime().exec(exSite);
+        }
     }
 
     /**
@@ -100,14 +110,14 @@ public class nyaPictureMain {
                 String intputFile = fileSource +benziName +"//";
                 nyaPictureMain.crawlerNyaPic(count,fileUrl,intputFile,suffix);
 
+                System.out.println(benziName+"本子缓存成功！！！！");
+
                 //缓存完后暂停几秒
                 Thread.sleep(3000);
             }
         }
 
-        System.out.println("nyahentai图片缓存成功！！！！");
-
-
+        System.out.println("喵绅士图片批量缓存成功！！！！");
 
     }
 
