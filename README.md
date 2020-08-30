@@ -1,5 +1,4 @@
-# nyaHentaiCrawler
-喵绅士本子爬取
+# nyaHentaiCrawler  nyaHentai本子爬取
 
 有两种方式可以爬取：
 1. clone 本项目的java代码，在本地IDE如IntelliJ IDEA中打开，启动main方法即可。
